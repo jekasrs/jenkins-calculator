@@ -1,18 +1,14 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.11'
+        }
+    }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Setup Python venv') {
+        stage('Install deps') {
             steps {
                 sh '''
-                  python3 -m venv venv
-                  . venv/bin/activate
                   pip install --upgrade pip
                   if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
                   pip install unittest-xml-reporting
@@ -22,10 +18,7 @@ pipeline {
 
         stage('Run Unittests') {
             steps {
-                sh '''
-                  . venv/bin/activate
-                  python -m xmlrunner discover -s test -o test-results
-                '''
+                sh 'python -m xmlrunner discover -s test -o test-results'
             }
         }
     }
