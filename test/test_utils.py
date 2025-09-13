@@ -1,6 +1,7 @@
 import unittest
 from unittest.mock import patch
-from jenkins_calculator.utils import read_number
+import utils
+from utils import read_number
 
 class TestUserInput(unittest.TestCase):
     

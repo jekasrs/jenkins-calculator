@@ -1,5 +1,7 @@
 import unittest
-from jenkins_calculator.math import calculate
+
+import math
+from math import calculate
 
 class TestCalculator(unittest.TestCase):
     # def setUp(self):
