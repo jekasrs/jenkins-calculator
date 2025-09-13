@@ -41,7 +41,7 @@ pipeline {
 
     post {
         always {
-            junit 'test-results/*.xml'
+            junit "${$PROJECT_DIR}/test-results/*.xml"
         }
     }
 }
