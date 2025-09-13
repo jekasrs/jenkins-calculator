@@ -33,7 +33,7 @@ pipeline {
                 sh '''
                 cd $PROJECT_DIR
                 export PYTHONPATH=$PWD
-                python3 -m xmlrunner discover -s test -o test-results
+                python3 -m xmlrunner discover -s test -p "*.py" -o test-results
                 '''
             }
         }
