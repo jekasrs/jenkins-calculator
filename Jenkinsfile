@@ -32,7 +32,7 @@ pipeline {
             steps {
                 sh '''
                 cd $PROJECT_DIR
-                export PYTHOPATH=$PWD
+                export PYTHONPATH=$PWD
                 python3 -m xmlrunner discover -s test -o test-results
                 '''
             }
