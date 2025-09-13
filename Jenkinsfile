@@ -30,7 +30,11 @@ pipeline {
 
         stage('Run Unittests') {
             steps {
-                sh 'python3 -m xmlrunner discover -s test -o test-results'
+                sh '''
+                cd $PROJECT_DIR
+                export PYTHOPATH=$PWD
+                python3 -m xmlrunner discover -s test -o test-results
+                '''
             }
         }
     }
