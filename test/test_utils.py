@@ -17,3 +17,9 @@ class TestUserInput(unittest.TestCase):
        number = read_number()
        self.assertIsInstance(number, int)
        self.assertEqual(number, -20)
+    
+    # TODO: test correct and incorrect input one by one
+    @patch('builtins.input', side_effect=['string','+'])
+    def test_correct_input_operation(self, mock_input):
+        pass
+  
